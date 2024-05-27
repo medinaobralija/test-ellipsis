@@ -18,13 +18,12 @@ router.get('/:id', (req, res) => {
 	res.json(user);
 });
 
-// Introduce a bug: Adding a user with an existing ID should not be allowed
 router.post('/', (req, res) => {
 	const user = {
 		id: parseInt(req.body.id),
 		name: req.body.name,
 	};
-	if (users.some(u => u.id === user.id)) { return res.status(400).send('User ID already exists'); } users.push(user);
+	users.push(user);
 	res.status(201).json(user);
 });
 

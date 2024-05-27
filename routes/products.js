@@ -18,13 +18,18 @@ router.get('/:id', (req, res) => {
 	res.json(product);
 });
 
-// Introduce a bug: Updating a product with a non-existing ID should return an error
+router.post('/', (req, res) => {
+	const product = {
+		id: parseInt(req.body.id),
+		name: req.body.name,
+	};
+	products.push(product);
+	res.status(201).json(product);
+});
+
 router.put('/:id', (req, res) => {
 	const product = products.find((p) => p.id === parseInt(req.params.id));
-	if (!product) {
-		return res.status(404).send('Product not found');
-	}
-	if (typeof req.body.name !== 'string' || req.body.name.trim() === '') { return res.status(400).send('Invalid product name'); } product.name = req.body.name;
+	product.name = req.body.name;
 	res.json(product);
 });
 
