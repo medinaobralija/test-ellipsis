@@ -24,7 +24,7 @@ router.put('/:id', (req, res) => {
 	if (!product) {
 		return res.status(404).send('Product not found');
 	}
-	product.name = req.body.name; // Bug: No validation on input
+	if (typeof req.body.name !== 'string' || req.body.name.trim() === '') { return res.status(400).send('Invalid product name'); } product.name = req.body.name;
 	res.json(product);
 });
 
