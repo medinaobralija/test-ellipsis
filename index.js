@@ -7,7 +7,7 @@ const logger = require('./middleware/logger');
 const userRoutes = require('./routes/users');
 const productRoutes = require('./routes/products');
 
-app.use(bodyParser.json()); // Add this line
+app.use(bodyParser.json());
 app.use(logger);
 
 app.use('/users', userRoutes);
