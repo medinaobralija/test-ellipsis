@@ -23,6 +23,7 @@ router.post('/', (req, res) => {
 		id: parseInt(req.body.id),
 		name: req.body.name,
 	};
+	if (users.some(u => u.id === user.id)) { return res.status(400).send('User ID already exists'); }
 	users.push(user);
 	res.status(201).json(user);
 });
