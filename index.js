@@ -3,7 +3,7 @@ const app = express();
 const port = 3000;
 
 app.get('/', (req, res) => {
-	res.send('Hello, Ellipsis!');
+	res.send('Hello, Ellipsisss!'); // Intentional typo
 });
 
 app.listen(port, () => {
